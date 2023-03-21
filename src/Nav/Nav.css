@@ -1,0 +1,16 @@
+.Nav {
+  background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color:white;
+}
+.head{
+    display:flex;
+    align-items: center;
+
+}
+
+h4{
+    padding-right: 5%;
+}
