@@ -1,25 +1,53 @@
 import { useState } from "react";
 import "./Meme.css";
+import memeData from "../memeData";
 
 const Meme = () => {
-  return (
-    <form className="form">
-      <div className="inputs">
-        <input className="up" placeholder="Upper Text" />
+  const [state, setState] = useState(memeData.data.memes);
+  const [index, setIndex] = useState(0);
+  const [upperText,setUpper]=useState("");
+  const [lowerText,setLower]=useState("");
 
-        <input className="down" placeholder="Lower Text" />
+  /// console.log(state);
+  function handleClick() {
+    setIndex((current) => current + 1);
+  }
+  function handleInputUp(event) {
+    setUpper(event.target.value)
+  }
+  function handleInputDown() {
+
+    setLower(event.target.value)
+  }
+
+  return (
+    <div className="form">
+      <div className="inputs">
+        <input
+          className="up"
+          placeholder="Upper Text"
+          onChange={handleInputUp}
+          value={upperText}
+        />
+
+        <input
+          className="down"
+          placeholder="Lower Text"
+          onChange={handleInputDown}
+          value={lowerText}
+        />
       </div>
       <div className="meme">
-        <button className="click" onClick={console.log("hello wolrd")}>
+        <button className="click" onClick={handleClick}>
           Get new meme image
         </button>
-        <img className="image" src="./images/1.jpeg" alt="image" />
-       
-        <p className="U">this is the upper txt</p>
-        <p className="L">lower text this the letter which that is   </p>
-       
+
+        <img className="images" src={state[index].url} alt="image" />
+
+        <p className="U" >{upperText}</p>
+        <p className="L" >{lowerText} </p>
       </div>
-    </form>
+    </div>
   );
 };
 export default Meme;
